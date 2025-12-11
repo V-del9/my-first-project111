@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алгоритм перевода в РГУ им. А.Н. Косыгина</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .university-logo {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ffcc00;
+        }
+        
+        .content {
+            padding: 30px 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #2a5298;
+            padding-left: 20px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #1e3c72;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .step {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #2a5298;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            display: inline-block;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+        
+        .step-content {
+            margin-left: 40px;
+        }
+        
+        .contact-info {
+            background: #e8f4ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            font-size: 20px;
+            margin-right: 15px;
+            color: #1e3c72;
+        }
+        
+        .documents-list {
+            list-style-type: none;
+        }
+        
+        .documents-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .documents-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .doc-icon {
+            margin-right: 10px;
+            color: #2a5298;
+            min-width: 24px;
+        }
+        
+        .note {
+            background: #fff9e6;
+            border-left: 4px solid #ffcc00;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .website-link {
+            display: inline-block;
+            background: #2a5298;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 15px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .website-link:hover {
+            background: #1e3c72;
+        }
+        
+        .tips {
+            background: #f0f7ff;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 40px;
+            border: 1px solid #d1e3ff;
+        }
+        
+        .tips-title {
+            font-size: 20px;
+            color: #1e3c72;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tips-title i {
+            margin-right: 10px;
+            color: #4CAF50;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            header {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .step-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="university-logo">РГУ им. А.Н. Косыгина</div>
+            <h1>Алгоритм перевода из другого ВУЗа</h1>
+            <div class="subtitle">Пошаговая инструкция для студентов, планирующих перевод</div>
+        </header>
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-search"></i>
+                    I. Предварительный этап
+                </div>
+                
+                <div class="step">
+                    <div class="step-title"><span class="step-number">1</span> Уточните наличие свободных мест</div>
+                    <div class="step-content">
+                        <p>Если вы планируете перевод на бюджет, необходимо уточнить наличие свободных бюджетных мест:</p>
+                        <div class="contact-info">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <strong>Напишите в деканат:</strong><br>
+                                <a href="mailto:itct@rguk.ru">itct@rguk.ru</a>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <strong>Позвоните:</strong><br>
+                                +7 (495) 811-01-01, доб. 1069
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title"><span class="step-number">2</span> Предварительно отправьте в деканат</div>
+                    <div class="step-content">
+                        <p>Отправьте справку об обучении (с оценками) для оценки академической разницы.</p>
+                        <p><strong>Укажите в обращении:</strong></p>
+                        <ul>
+                            <li>Направление и профиль подготовки</li>
+                            <li>Форму обучения (очная/заочная/вечерняя)</li>
+                            <li>Курс / семестр перевода</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+
+                <div class="section-title">
+                    <i class="fas fa-inbox"></i>
+                    II. Основная процедура перевода
+                </div>
+                
+                <div class="step">
+                    <div class="step-title"><span class="step-number">1</span> Ознакомьтесь с вакантными местами</div>
+                    <div class="step-content">
+                        <p>Проверьте количество вакантных бюджетных мест на официальном сайте университета:</p>
+                        <a href="https://rguk.ru/" target="_blank" class="website-link">
+                            <i class="fas fa-external-link-alt"></i> Перейти на сайт РГУ
+                        </a>
+                        <p class="note">Раздел: Абитуриенту → Перевод из другого ВУЗа → Вакантные места</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title"><span class="step-number">2</span> Подайте пакет документов</div>
+                    <div class="step-content">
+                        <p>Направьте в Приёмную комиссию следующий пакет документов:</p>
+                        <ul class="documents-list">
+                            <li><span class="doc-icon"><i class="far fa-id-card"></i></span> Копия паспорта (страница с фото и пропиской)</li>
+                            <li><span class="doc-icon"><i class="fas fa-address-card"></i></span> Копия СНИЛС</li>
+                            <li><span class="doc-icon"><i class="fas fa-user-graduate"></i></span> Справка о статусе студента (оригинал, текущего месяца)</li>
+                            <li><span class="doc-icon"><i class="fas fa-graduation-cap"></i></span> Справка о периоде обучения (оригинал, текущего месяца)</li>
+                            <li><span class="doc-icon"><i class="fas fa-file-certificate"></i></span> Копии лицензии и аккредитации ВУЗа (заверенные, только для негосударственных ВУЗов)</li>
+                            <li><span class="doc-icon"><i class="fas fa-file-alt"></i></span> Заявление по форме (скачать на сайте в разделе «Перевод из другого ВУЗа»)</li>
+                            <li><span class="doc-icon"><i class="fas fa-user-check"></i></span> Согласие на обработку персональных данных (скачать на сайте)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title"><span class="step-number">3</span> Получите справку о принятии на перевод</div>
+                    <div class="step-content">
+                        <p>После положительного решения Приёмной комиссии получите справку о принятии на перевод.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title"><span class="step-number">4</span> Обратитесь в свой ВУЗ</div>
+                    <div class="step-content">
+                        <p>В своём текущем учебном заведении:</p>
+                        <ul>
+                            <li>Приложите справку о принятии на перевод</li>
+                            <li>Напишите заявление об отчислении в порядке перевода</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title"><span class="step-number">5</span> Получите документы об отчислении</div>
+                    <div class="step-content">
+                        <p>После издания приказа об отчислении в вашем ВУЗе:</p>
+                        <ul>
+                            <li>Получите выписку из приказа об отчислении</li>
+                            <li>Заберите оригинал аттестата/диплома, по которому поступали</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title"><span class="step-number">6</span> Предоставьте документы в РГУ</div>
+
+                    <div class="step-content">
+                        <p>В РГУ им. А.Н. Косыгина:</p>
+                        <ul>
+                            <li>Предоставьте выписку из приказа об отчислении в Приёмную комиссию</li>
+                            <li>Ожидайте приказа о зачислении в порядке перевода</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title"><span class="step-number">7</span> После зачисления</div>
+                    <div class="step-content">
+                        <ul>
+                            <li>Приступите к обучению</li>
+                            <li>Обратитесь в деканат для согласования ликвидации академической разницы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tips">
+                <div class="tips-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Важные рекомендации
+                </div>
+                <p>✅ Отправляйте документы заранее, до окончания срока приёма (уточняйте дедлайны на официальном сайте).</p>
+                <p>✅ Сохраняйте копии всех отправленных документов.</p>
+                <p>✅ Держите на связи деканат и приёмную комиссию для уточнения деталей.</p>
+                <p>✅ Уточняйте сроки ликвидации академической разницы после зачисления.</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Российский государственный университет им. А.Н. Косыгина</p>
+            <p>Официальный сайт: <a href="https://rguk.ru/" target="_blank">rguk.ru</a></p>
+            <p>Актуальная информация на: 2024 год</p>
+        </footer>
+    </div>
+</body>
+</html>
